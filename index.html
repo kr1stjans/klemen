@@ -42,6 +42,8 @@
   <meta name="twitter:description" content="Programer, padalec in prijatelj, na katerega si se lahko vedno zanesel." />
   <meta name="twitter:image" content="https://kr1stjans.github.io/klemen/assets/img/og-klemen.jpg" />
 
+  <link rel="preconnect" href="https://s3.edpid.com" crossorigin />
+  <link rel="dns-prefetch" href="https://s3.edpid.com" />
   <link rel="preload" as="image" href="assets/img/hero-sky.webp" fetchpriority="high" />
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/cormorant-garamond-500-latin.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-400-latin.woff2" crossorigin />
@@ -89,6 +91,8 @@
     <nav class="site-nav" id="site-nav" aria-label="Glavna navigacija">
       <a href="#story"><span data-l="sl">Zgodba</span><span data-l="en">His Story</span></a>
       <a href="#passion"><span data-l="sl">Padalstvo</span><span data-l="en">Skydiving</span></a>
+      <a href="#videos"><span data-l="sl">Posnetki</span><span data-l="en">Videos</span></a>
+      <a href="#friends"><span data-l="sl">Prijatelji</span><span data-l="en">Friends</span></a>
       <a href="#memories"><span data-l="sl">Spomini</span><span data-l="en">Memories</span></a>
       <a href="#share"><span data-l="sl">Deli spomin</span><span data-l="en">Share a Memory</span></a>
     </nav>
@@ -110,6 +114,14 @@
 
   <!-- ================= HERO ================= -->
   <section class="hero" id="home">
+    <!-- his own footage: "Mr. Smiley" -->
+    <div class="hero-video" aria-hidden="true">
+      <video id="hero-video" class="hero-video-el" width="1280" height="720"
+             poster="assets/img/hero-poster.webp"
+             autoplay muted loop playsinline disablepictureinpicture preload="metadata" tabindex="-1">
+        <source src="https://s3.edpid.com/remembering-klemen/video/hero-klemen.mp4" type="video/mp4" />
+      </video>
+    </div>
     <div class="hero-content">
       <figure class="hero-portrait">
         <img src="assets/img/klemen-portrait.webp" width="640" height="509" fetchpriority="high" decoding="async"
@@ -188,6 +200,414 @@
     </div>
   </section>
 
+  <!-- ================= VIDEOS ================= -->
+  <section class="videos" id="videos">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow"><span data-l="sl">Njegovi poleti</span><span data-l="en">His flights</span></p>
+        <h2 data-l="sl">Kot je nebo videl on</h2>
+        <h2 data-l="en">The Sky as He Saw It</h2>
+      </div>
+      <p class="videos-note reveal">
+        <span data-l="sl">Klemen je svoje skoke snemal in jih zbral na svojem kanalu. Šestindvajset posnetkov, nekaj več kot tri ure letenja, od Šentvida do Floride, Kolumbije in Empuriabrave.</span>
+        <span data-l="en">Klemen filmed his jumps and gathered them on his own channel. Twenty-six videos, a little over three hours of flying, from Šentvid to Florida, Colombia, and Empuriabrava.</span>
+      </p>
+      <div class="v-grid" id="v-grid">
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/01-colombia.mp4" data-yt="dSomvdbFy10" data-title="Colombia"
+                data-aria-sl="Predvajaj posnetek: Colombia" data-aria-en="Play video: Colombia" aria-label="Predvajaj posnetek: Colombia">
+          <span class="v-thumb">
+            <img src="assets/img/video/dSomvdbFy10.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="Colombia" data-alt-sl="Klemnov posnetek: Colombia" data-alt-en="Klemen’s video: Colombia" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">7:59</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">01</span>
+            <span class="v-title">Colombia</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/02-pdvkps75.mp4" data-yt="MCHAxs5VWpM" data-title="PDVKPS75"
+                data-aria-sl="Predvajaj posnetek: PDVKPS75" data-aria-en="Play video: PDVKPS75" aria-label="Predvajaj posnetek: PDVKPS75">
+          <span class="v-thumb">
+            <img src="assets/img/video/MCHAxs5VWpM.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="PDVKPS75" data-alt-sl="Klemnov posnetek: PDVKPS75" data-alt-en="Klemen’s video: PDVKPS75" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">11:42</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">02</span>
+            <span class="v-title">PDVKPS75</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/03-tampabay.mp4" data-yt="3LZvH7KtsO8" data-title="TampaBay"
+                data-aria-sl="Predvajaj posnetek: TampaBay" data-aria-en="Play video: TampaBay" aria-label="Predvajaj posnetek: TampaBay">
+          <span class="v-thumb">
+            <img src="assets/img/video/3LZvH7KtsO8.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="TampaBay" data-alt-sl="Klemnov posnetek: TampaBay" data-alt-en="Klemen’s video: TampaBay" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">10:07</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">03</span>
+            <span class="v-title">TampaBay</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/04-linesandbumps.mp4" data-yt="bb1Brh4x-LA" data-title="LinesAndBumps"
+                data-aria-sl="Predvajaj posnetek: LinesAndBumps" data-aria-en="Play video: LinesAndBumps" aria-label="Predvajaj posnetek: LinesAndBumps">
+          <span class="v-thumb">
+            <img src="assets/img/video/bb1Brh4x-LA.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="LinesAndBumps" data-alt-sl="Klemnov posnetek: LinesAndBumps" data-alt-en="Klemen’s video: LinesAndBumps" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">9:01</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">04</span>
+            <span class="v-title">LinesAndBumps</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/05-surstromming.mp4" data-yt="MXW_wI2YAaY" data-title="Surströmming"
+                data-aria-sl="Predvajaj posnetek: Surströmming" data-aria-en="Play video: Surströmming" aria-label="Predvajaj posnetek: Surströmming">
+          <span class="v-thumb">
+            <img src="assets/img/video/MXW_wI2YAaY.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="Surströmming" data-alt-sl="Klemnov posnetek: Surströmming" data-alt-en="Klemen’s video: Surströmming" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">9:34</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">05</span>
+            <span class="v-title">Surströmming</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/06-samstag.mp4" data-yt="LbMx8YJZjGk" data-title="Samstag"
+                data-aria-sl="Predvajaj posnetek: Samstag" data-aria-en="Play video: Samstag" aria-label="Predvajaj posnetek: Samstag">
+          <span class="v-thumb">
+            <img src="assets/img/video/LbMx8YJZjGk.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="Samstag" data-alt-sl="Klemnov posnetek: Samstag" data-alt-en="Klemen’s video: Samstag" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">4:30</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">06</span>
+            <span class="v-title">Samstag</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/07-hellaherb2024.mp4" data-yt="j46LQi7bT0k" data-title="HellaHerb2024"
+                data-aria-sl="Predvajaj posnetek: HellaHerb2024" data-aria-en="Play video: HellaHerb2024" aria-label="Predvajaj posnetek: HellaHerb2024">
+          <span class="v-thumb">
+            <img src="assets/img/video/j46LQi7bT0k.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="HellaHerb2024" data-alt-sl="Klemnov posnetek: HellaHerb2024" data-alt-en="Klemen’s video: HellaHerb2024" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">3:31</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">07</span>
+            <span class="v-title">HellaHerb2024</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/08-vectorfest2024.mp4" data-yt="yMcX5wVNGLA" data-title="VectorFest2024"
+                data-aria-sl="Predvajaj posnetek: VectorFest2024" data-aria-en="Play video: VectorFest2024" aria-label="Predvajaj posnetek: VectorFest2024">
+          <span class="v-thumb">
+            <img src="assets/img/video/yMcX5wVNGLA.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="VectorFest2024" data-alt-sl="Klemnov posnetek: VectorFest2024" data-alt-en="Klemen’s video: VectorFest2024" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">7:55</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">08</span>
+            <span class="v-title">VectorFest2024</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/09-deleon.mp4" data-yt="mXOozDj1xhU" data-title="DeLeón"
+                data-aria-sl="Predvajaj posnetek: DeLeón" data-aria-en="Play video: DeLeón" aria-label="Predvajaj posnetek: DeLeón">
+          <span class="v-thumb">
+            <img src="assets/img/video/mXOozDj1xhU.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="DeLeón" data-alt-sl="Klemnov posnetek: DeLeón" data-alt-en="Klemen’s video: DeLeón" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">10:21</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">09</span>
+            <span class="v-title">DeLeón</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/10-florida.mp4" data-yt="E6lOySK5du8" data-title="Florida"
+                data-aria-sl="Predvajaj posnetek: Florida" data-aria-en="Play video: Florida" aria-label="Predvajaj posnetek: Florida">
+          <span class="v-thumb">
+            <img src="assets/img/video/E6lOySK5du8.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="Florida" data-alt-sl="Klemnov posnetek: Florida" data-alt-en="Klemen’s video: Florida" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">7:11</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">10</span>
+            <span class="v-title">Florida</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/11-asador.mp4" data-yt="o7ZhJ3Qh9sg" data-title="Asador"
+                data-aria-sl="Predvajaj posnetek: Asador" data-aria-en="Play video: Asador" aria-label="Predvajaj posnetek: Asador">
+          <span class="v-thumb">
+            <img src="assets/img/video/o7ZhJ3Qh9sg.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="Asador" data-alt-sl="Klemnov posnetek: Asador" data-alt-en="Klemen’s video: Asador" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">4:54</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">11</span>
+            <span class="v-title">Asador</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/12-eldorado.mp4" data-yt="y3rV_kySG8E" data-title="ElDorado"
+                data-aria-sl="Predvajaj posnetek: ElDorado" data-aria-en="Play video: ElDorado" aria-label="Predvajaj posnetek: ElDorado">
+          <span class="v-thumb">
+            <img src="assets/img/video/y3rV_kySG8E.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="ElDorado" data-alt-sl="Klemnov posnetek: ElDorado" data-alt-en="Klemen’s video: ElDorado" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">4:43</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">12</span>
+            <span class="v-title">ElDorado</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/13-flyingpullupcord.mp4" data-yt="gsp91_gIhf8" data-title="FlyingPullupCord"
+                data-aria-sl="Predvajaj posnetek: FlyingPullupCord" data-aria-en="Play video: FlyingPullupCord" aria-label="Predvajaj posnetek: FlyingPullupCord">
+          <span class="v-thumb">
+            <img src="assets/img/video/gsp91_gIhf8.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="FlyingPullupCord" data-alt-sl="Klemnov posnetek: FlyingPullupCord" data-alt-en="Klemen’s video: FlyingPullupCord" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">3:41</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">13</span>
+            <span class="v-title">FlyingPullupCord</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/14-gatesofair.mp4" data-yt="Ft3H5xes4sg" data-title="GatesOfAir"
+                data-aria-sl="Predvajaj posnetek: GatesOfAir" data-aria-en="Play video: GatesOfAir" aria-label="Predvajaj posnetek: GatesOfAir">
+          <span class="v-thumb">
+            <img src="assets/img/video/Ft3H5xes4sg.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="GatesOfAir" data-alt-sl="Klemnov posnetek: GatesOfAir" data-alt-en="Klemen’s video: GatesOfAir" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">6:54</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">14</span>
+            <span class="v-title">GatesOfAir</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/15-pizzafrescasenzarucola.mp4" data-yt="sB-kefy5POw" data-title="PizzaFrescaSenzaRucola"
+                data-aria-sl="Predvajaj posnetek: PizzaFrescaSenzaRucola" data-aria-en="Play video: PizzaFrescaSenzaRucola" aria-label="Predvajaj posnetek: PizzaFrescaSenzaRucola">
+          <span class="v-thumb">
+            <img src="assets/img/video/sB-kefy5POw.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="PizzaFrescaSenzaRucola" data-alt-sl="Klemnov posnetek: PizzaFrescaSenzaRucola" data-alt-en="Klemen’s video: PizzaFrescaSenzaRucola" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">5:00</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">15</span>
+            <span class="v-title">PizzaFrescaSenzaRucola</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/16-muddydeltainfano.mp4" data-yt="KYufSh6qBTA" data-title="MuddyDeltaInFano"
+                data-aria-sl="Predvajaj posnetek: MuddyDeltaInFano" data-aria-en="Play video: MuddyDeltaInFano" aria-label="Predvajaj posnetek: MuddyDeltaInFano">
+          <span class="v-thumb">
+            <img src="assets/img/video/KYufSh6qBTA.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="MuddyDeltaInFano" data-alt-sl="Klemnov posnetek: MuddyDeltaInFano" data-alt-en="Klemen’s video: MuddyDeltaInFano" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">5:12</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">16</span>
+            <span class="v-title">MuddyDeltaInFano</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/17-deland.mp4" data-yt="VcTfA1DEFWw" data-title="DeLand"
+                data-aria-sl="Predvajaj posnetek: DeLand" data-aria-en="Play video: DeLand" aria-label="Predvajaj posnetek: DeLand">
+          <span class="v-thumb">
+            <img src="assets/img/video/VcTfA1DEFWw.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="DeLand" data-alt-sl="Klemnov posnetek: DeLand" data-alt-en="Klemen’s video: DeLand" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">5:37</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">17</span>
+            <span class="v-title">DeLand</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/18-springtime.mp4" data-yt="o63jQEwhtBM" data-title="Springtime"
+                data-aria-sl="Predvajaj posnetek: Springtime" data-aria-en="Play video: Springtime" aria-label="Predvajaj posnetek: Springtime">
+          <span class="v-thumb">
+            <img src="assets/img/video/o63jQEwhtBM.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="Springtime" data-alt-sl="Klemnov posnetek: Springtime" data-alt-en="Klemen’s video: Springtime" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">6:49</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">18</span>
+            <span class="v-title">Springtime</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/19-twoforone.mp4" data-yt="7YEoJADrf0I" data-title="TwoForOne"
+                data-aria-sl="Predvajaj posnetek: TwoForOne" data-aria-en="Play video: TwoForOne" aria-label="Predvajaj posnetek: TwoForOne">
+          <span class="v-thumb">
+            <img src="assets/img/video/7YEoJADrf0I.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="TwoForOne" data-alt-sl="Klemnov posnetek: TwoForOne" data-alt-en="Klemen’s video: TwoForOne" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">2:48</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">19</span>
+            <span class="v-title">TwoForOne</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/20-abovetheclouds.mp4" data-yt="HJIHjBABcLo" data-title="AboveTheClouds"
+                data-aria-sl="Predvajaj posnetek: AboveTheClouds" data-aria-en="Play video: AboveTheClouds" aria-label="Predvajaj posnetek: AboveTheClouds">
+          <span class="v-thumb">
+            <img src="assets/img/video/HJIHjBABcLo.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="AboveTheClouds" data-alt-sl="Klemnov posnetek: AboveTheClouds" data-alt-en="Klemen’s video: AboveTheClouds" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">3:30</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">20</span>
+            <span class="v-title">AboveTheClouds</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/21-allgasnobreaks.mp4" data-yt="GoRa2_kthHI" data-title="AllGasNoBreaks"
+                data-aria-sl="Predvajaj posnetek: AllGasNoBreaks" data-aria-en="Play video: AllGasNoBreaks" aria-label="Predvajaj posnetek: AllGasNoBreaks">
+          <span class="v-thumb">
+            <img src="assets/img/video/GoRa2_kthHI.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="AllGasNoBreaks" data-alt-sl="Klemnov posnetek: AllGasNoBreaks" data-alt-en="Klemen’s video: AllGasNoBreaks" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">4:20</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">21</span>
+            <span class="v-title">AllGasNoBreaks</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/22-90degreesfahrenheit.mp4" data-yt="7-tWj28OoSQ" data-title="90DegreesFahrenheit"
+                data-aria-sl="Predvajaj posnetek: 90DegreesFahrenheit" data-aria-en="Play video: 90DegreesFahrenheit" aria-label="Predvajaj posnetek: 90DegreesFahrenheit">
+          <span class="v-thumb">
+            <img src="assets/img/video/7-tWj28OoSQ.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="90DegreesFahrenheit" data-alt-sl="Klemnov posnetek: 90DegreesFahrenheit" data-alt-en="Klemen’s video: 90DegreesFahrenheit" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">2:18</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">22</span>
+            <span class="v-title">90DegreesFahrenheit</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/23-flyfejst2020.mp4" data-yt="tVqzkPxY9H8" data-title="FlyFejst2020"
+                data-aria-sl="Predvajaj posnetek: FlyFejst2020" data-aria-en="Play video: FlyFejst2020" aria-label="Predvajaj posnetek: FlyFejst2020">
+          <span class="v-thumb">
+            <img src="assets/img/video/tVqzkPxY9H8.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="FlyFejst2020" data-alt-sl="Klemnov posnetek: FlyFejst2020" data-alt-en="Klemen’s video: FlyFejst2020" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">10:00</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">23</span>
+            <span class="v-title">FlyFejst2020</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/24-delanduncut.mp4" data-yt="2dWB1XzK-D0" data-title="DeLandUncut"
+                data-aria-sl="Predvajaj posnetek: DeLandUncut" data-aria-en="Play video: DeLandUncut" aria-label="Predvajaj posnetek: DeLandUncut">
+          <span class="v-thumb">
+            <img src="assets/img/video/2dWB1XzK-D0.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="DeLandUncut" data-alt-sl="Klemnov posnetek: DeLandUncut" data-alt-en="Klemen’s video: DeLandUncut" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">32:51</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">24</span>
+            <span class="v-title">DeLandUncut</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/25-balloonjump.mp4" data-yt="RFDL2JtQdqs" data-title="BalloonJump"
+                data-aria-sl="Predvajaj posnetek: BalloonJump" data-aria-en="Play video: BalloonJump" aria-label="Predvajaj posnetek: BalloonJump">
+          <span class="v-thumb">
+            <img src="assets/img/video/RFDL2JtQdqs.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="BalloonJump" data-alt-sl="Klemnov posnetek: BalloonJump" data-alt-en="Klemen’s video: BalloonJump" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">3:09</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">25</span>
+            <span class="v-title">BalloonJump</span>
+          </span>
+        </button>
+        <button class="v-item reveal" type="button" data-src="https://s3.edpid.com/remembering-klemen/video/26-90degreesfahrenheitv2.mp4" data-yt="-dn34cKsu1Q" data-title="90DegreesFahrenheitV2"
+                data-aria-sl="Predvajaj posnetek: 90DegreesFahrenheitV2" data-aria-en="Play video: 90DegreesFahrenheitV2" aria-label="Predvajaj posnetek: 90DegreesFahrenheitV2">
+          <span class="v-thumb">
+            <img src="assets/img/video/-dn34cKsu1Q.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="90DegreesFahrenheitV2" data-alt-sl="Klemnov posnetek: 90DegreesFahrenheitV2" data-alt-en="Klemen’s video: 90DegreesFahrenheitV2" />
+            <span class="v-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.2 L19 12 L8 18.8 Z" fill="currentColor"/></svg></span>
+            <span class="v-dur">4:09</span>
+          </span>
+          <span class="v-meta">
+            <span class="v-index">26</span>
+            <span class="v-title">90DegreesFahrenheitV2</span>
+          </span>
+        </button>
+      </div>
+      <p class="v-more reveal">
+        <a href="https://www.youtube.com/playlist?list=PLvegrPF8HlSapryfyM92UtjMPyoqy7Jge" target="_blank" rel="noopener noreferrer">
+          <span data-l="sl">Odpri celoten seznam na YouTubu</span><span data-l="en">Open the full playlist on YouTube</span>
+          <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M7 17 L17 7 M9 7 h8 v8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= TRIBUTE FROM HIS SKYDIVING FRIENDS ================= -->
+  <section class="tribute" id="friends">
+    <div class="wrap narrow tribute-inner reveal">
+      <div class="section-head">
+        <p class="eyebrow"><span data-l="sl">Beseda njegovih padalskih prijateljev</span><span data-l="en">A word from his skydiving friends</span></p>
+        <h2 data-l="sl">&raquo;Mr. Smiley&laquo;</h2>
+        <h2 data-l="en">&ldquo;Mr. Smiley&rdquo;</h2>
+      </div>
+
+      <blockquote class="tribute-quote">
+        <div class="tribute-body">
+          <p class="tribute-lead" data-l="sl">Klemna smo spoznali leta 2018, na te&#269;aju padalstva. Na za&#269;etku je bil nekoliko bolj tih, miren, zadr&#382;an &#269;lovek, a zelo vedo&#382;eljen, delaven in &#382;e od samega za&#269;etka zelo strasten, kar se ti&#269;e padalstva &ndash; bil je tisti tip &#269;loveka, ki bi ga vsak in&#353;truktor opisal kot idealnega u&#269;enca.</p>
+          <p class="tribute-lead" data-l="en">We met Klemen in 2018, on a skydiving course. At first he was a rather quiet, calm, reserved person, but very eager to learn, hardworking, and from the very beginning deeply passionate about skydiving &ndash; he was the kind of person any instructor would describe as the ideal student.</p>
+
+          <p data-l="sl">Kaj kmalu pa je iz u&#269;enca prerastel tudi v pravega prijatelja. Oktobra istega leta, po tem ko je &#382;e opravil padalsko licenco v Sloveniji, se je Klemen zaradi svoje poklicne kariere &ndash; zaposlil se je namre&#269; pri Googlu &ndash; preselil v &#352;vico. Tam je seveda nadaljeval svojo padalsko pot in opravil veliko skokov ter spoznal veliko novih ljudi, a se je kljub temu vedno rad vra&#269;al tudi k nam v Slovenijo, na &raquo;doma&#269;e&laquo; letali&#353;&#269;e, k starim prijateljem &ndash; vsaki&#269; z nekoliko dalj&#353;o brado.</p>
+          <p data-l="en">Before long he grew from a student into a real friend. In October of that same year, after he had already earned his skydiving licence in Slovenia, Klemen moved to Switzerland for his career &ndash; he had taken a job at Google. There he of course continued his skydiving path, made many jumps and met many new people, yet he always loved coming back to us in Slovenia, to our &ldquo;home&rdquo; airfield, to his old friends &ndash; each time with a slightly longer beard.</p>
+
+          <p data-l="sl">Klemen je imel vedno veliko &#382;eljo po napredku, zato je svoje znanje najprej izpopolnjeval v vetrovnikih po svetu. Leta 2022 &ndash; mislim, da &#353;ele takrat zgolj zato, ker je v tistem letu kupil čisto svoje padalo, &#269;elado in kombinezon, ki so se barvno in stilsko ujemali v njegovih barvah: rumeni, rjavi in sivi &ndash; pa se je odlo&#269;il, da se udele&#382;i tudi svojega prvega padalskega &raquo;skill campa&laquo; Fly 4 life. Kljub temu da je bilo vreme takrat precej slabo in skokov ni bilo ravno veliko, je bilo to dovolj, da je v Klemnu spodbudilo &#382;eljo po &#353;e. Od tistega kampa naprej se je Klemen ekipi Fly 4 life na skill campih pridru&#382;il &#353;e vsaj 6-krat, v&#269;asih celo na dveh zaporednih kampih hkrati. <em>There is no such thing as too much flying.</em> Pot napredka ga je nato skupaj s prijatelji vodila &#353;irom sveta, od Italije, Nem&#269;ije, &#352;panije, &#352;vedske pa vse do ZDA, Kolumbije in Zdru&#382;enih arabskih emiratov. Tam je nabiral padalske izku&#353;nje, znanje, predvsem pa je v tujini pridobil ogromno novih prijateljev ter z njimi ustvaril ne&#353;teto lepih spominov.</p>
+          <p data-l="en">Klemen always had a strong desire to progress, so he first honed his skills in wind tunnels around the world. In 2022 &ndash; and I think only then, simply because that was the year he bought a parachute, helmet and suit all of his own, matched in colour and style to his own palette of yellow, brown and grey &ndash; he decided to attend his first Fly 4 life skill camp. Even though the weather was quite poor and there were not many jumps, it was enough to spark in Klemen a desire for more. From that camp onward he joined the Fly 4 life team at their skill camps at least six more times, sometimes even at two consecutive camps in a row. <em>There is no such thing as too much flying.</em> The path of progress then led him, together with his friends, across the world: from Italy, Germany, Spain and Sweden all the way to the USA, Colombia and the United Arab Emirates. There he gathered experience and knowledge, but above all he gained a great many new friends abroad and created countless beautiful memories with them.</p>
+
+          <p data-l="sl">Kljub temu da smo Klemna v za&#269;etku spoznali kot zelo tihega in zadr&#382;anega, pa smo s&#269;asoma ugotovili, da v resnici ni bil čisto tak. Res je, da je bil njegov obraz pogosto resen &ndash; med letenjem celo do te mere, da si je zaradi tega prislu&#382;il vzdevek &raquo;Mr. Smiley&laquo;. S &#269;asom in z izku&#353;njami pa smo se nau&#269;ili, da je ta njegov resni pogled najve&#269;krat samo krinka za kak&#353;no pikro, zabavno opazko, ki je v za&#269;etku od njega &#353;e zdale&#269; ne bi pri&#269;akovali. V resnici je bil zelo zabaven, prizemljen in skromen &#269;lovek, ki je bil vedno pripravljen pomagati, ne glede na to, ali je bil potreben zgolj nasvet ali pa kak&#353;na roka v pomo&#269;. Svojo delovno etiko nam je pokazal &#382;e čisto na za&#269;etku svoje padalske poti, na svojem prvem obisku Empuriabrave, kjer je vsak dan po skokih vneto pisal magistrsko nalogo. Pokazal nam jo je tudi s tem, da je vsak dan na letali&#353;&#269;u svoje padalo vedno zlagal sam in ga zlo&#382;il najhitreje od vseh nas, ve&#269;inoma brez da bi si sploh odpel kombinezon, ne glede na to, ali je bilo zunaj 15 ali 35 stopinj. Vedno brez kakr&#353;negakoli nerganja ali prito&#382;evanja. Predvsem pa nam je z vsem omenjenim pokazal svojo strast do padalstva.</p>
+          <p data-l="en">Although we first came to know Klemen as very quiet and reserved, over time we realised that he was not quite like that at all. It is true that his face was often serious &ndash; while flying, so much so that it earned him the nickname &ldquo;Mr. Smiley&rdquo;. With time and experience, though, we learned that this serious look of his was most often just a disguise for some dry, funny remark that, in the beginning, we would never have expected from him. In truth he was a very funny, grounded and modest person, always ready to help, whether what was needed was simply a piece of advice or a hand. He showed us his work ethic right at the start of his skydiving path, on his first visit to Empuriabrava, where every day after jumping he diligently wrote his master&rsquo;s thesis. He showed it to us too by always packing his own parachute at the airfield, every day, and packing it faster than any of us, mostly without even unzipping his suit, whether it was 15 or 35 degrees outside. Always without any grumbling or complaining. Above all, in all of this, he showed us his passion for skydiving.</p>
+
+          <p data-l="sl">Pogre&#353;ali te bomo, prijatelj na&#353; dragi. Pogre&#353;ali bomo skupne ve&#269;ere, pogre&#353;ali bomo pogovore, dru&#382;enje s teboj na tleh in v zraku. Pogre&#353;ali bomo skupna potovanja in dogodiv&#353;&#269;ine v tujini in doma. Bilo nam je v najve&#269;jo &#269;ast in veselje deliti si nebo s tabo &hellip;</p>
+          <p data-l="en">We will miss you, our dear friend. We will miss our evenings together, we will miss the conversations, the time spent with you on the ground and in the air. We will miss our shared travels and adventures, abroad and at home. It was our greatest honour and joy to share the sky with you &hellip;</p>
+
+          <p class="tribute-blue">
+            <span data-l="sl">In kot pravimo med padalci: Blue skies, Klemen! Se vidimo tam zgoraj</span>
+            <span data-l="en">And as we say among skydivers: Blue skies, Klemen! See you up there</span>
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 20.5 C6.5 16.4 3.5 13.4 3.5 9.9 A4.4 4.4 0 0 1 12 7.6 A4.4 4.4 0 0 1 20.5 9.9 C20.5 13.4 17.5 16.4 12 20.5 Z" fill="currentColor"/></svg>
+          </p>
+        </div>
+
+        <footer class="tribute-attrib">
+          <cite class="tribute-who">
+            <span data-l="sl">Njegovi padalski prijatelji in so&#353;olci s te&#269;aja</span>
+            <span data-l="en">His skydiving friends and coursemates</span>
+          </cite>
+          <span class="tribute-role">
+            <span data-l="sl">Zapisali prijatelji, s katerimi je delil nebo</span>
+            <span data-l="en">Written by the friends he shared the sky with</span>
+          </span>
+        </footer>
+      </blockquote>
+    </div>
+  </section>
+
   <!-- ================= MEMORIES / GALLERY ================= -->
   <section class="memories" id="memories">
     <div class="wrap">
@@ -224,10 +644,6 @@
         <button class="g-item reveal" data-full="assets/img/gallery/g13.webp" data-cap-sl="Prijatelja" data-cap-en="Friends" aria-label="Odpri fotografijo">
           <img class="g-img" src="assets/img/gallery/g13-t.webp" width="1350" height="1800" loading="lazy" decoding="async" alt="Klemen s prijateljem" data-alt-sl="Klemen s prijateljem" data-alt-en="Klemen with a friend" />
           <span class="g-cap" aria-hidden="true"><span data-l="sl">Prijatelja</span><span data-l="en">Friends</span></span>
-        </button>
-        <button class="g-item reveal" data-full="assets/img/gallery/g14.webp" data-cap-sl="Zima" data-cap-en="Winter" aria-label="Odpri fotografijo">
-          <img class="g-img" src="assets/img/gallery/g14-t.webp" width="1800" height="1350" loading="lazy" decoding="async" alt="Klemen pozimi z družbo" data-alt-sl="Klemen pozimi z družbo" data-alt-en="Klemen in winter with friends" />
-          <span class="g-cap" aria-hidden="true"><span data-l="sl">Zima</span><span data-l="en">Winter</span></span>
         </button>
       </div>
     </div>
@@ -279,6 +695,29 @@
     <figcaption class="lb-cap" id="lb-cap"></figcaption>
   </figure>
   <button type="button" class="lb-btn lb-next" id="lb-next" aria-label="Naslednja">
+    <svg viewBox="0 0 24 24" width="34" height="34"><path d="M9 5 L16 12 L9 19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+</div>
+
+<!-- ================= VIDEO PLAYER ================= -->
+<div class="vbox" id="vbox" role="dialog" aria-modal="true" aria-label="Predvajalnik posnetkov" hidden>
+  <button type="button" class="vbox-btn vbox-close" id="vbox-close" aria-label="Zapri"
+          data-aria-sl="Zapri" data-aria-en="Close">
+    <svg viewBox="0 0 24 24" width="26" height="26"><path d="M6 6 L18 18 M18 6 L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  </button>
+  <button type="button" class="vbox-btn vbox-prev" id="vbox-prev" aria-label="Prejšnji posnetek"
+          data-aria-sl="Prejšnji posnetek" data-aria-en="Previous video">
+    <svg viewBox="0 0 24 24" width="34" height="34"><path d="M15 5 L8 12 L15 19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="vbox-stage">
+    <div class="vbox-frame" id="vbox-frame"></div>
+    <p class="vbox-cap">
+      <span class="vbox-title" id="vbox-title"></span>
+      <span class="vbox-count" id="vbox-count"></span>
+    </p>
+  </div>
+  <button type="button" class="vbox-btn vbox-next" id="vbox-next" aria-label="Naslednji posnetek"
+          data-aria-sl="Naslednji posnetek" data-aria-en="Next video">
     <svg viewBox="0 0 24 24" width="34" height="34"><path d="M9 5 L16 12 L9 19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
 </div>

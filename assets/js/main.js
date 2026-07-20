@@ -36,6 +36,12 @@
     for (var j = 0; j < imgs.length; j++) {
       imgs[j].setAttribute("alt", imgs[j].getAttribute("data-alt-" + lang) || "");
     }
+    // localized aria-labels (video tiles, player controls)
+    var labelled = doc.querySelectorAll("[data-aria-" + lang + "]");
+    for (var a2 = 0; a2 < labelled.length; a2++) {
+      labelled[a2].setAttribute("aria-label", labelled[a2].getAttribute("data-aria-" + lang) || "");
+    }
+    if (typeof refreshVideoCaption === "function") refreshVideoCaption();
     if (persist) { try { localStorage.setItem("rk.lang.v2", lang); } catch (e) {} }
     if (lightbox && !lightbox.hasAttribute("hidden")) refreshLightboxCaption();
   }
@@ -229,6 +235,184 @@
     else if (e.key === "ArrowRight") { showImage(current + 1); }
     else if (e.key === "Tab") {
       var f = [lbPrev, lbNext, lbClose].filter(Boolean);
+      var idx = f.indexOf(doc.activeElement);
+      e.preventDefault();
+      var nextIdx = e.shiftKey ? (idx <= 0 ? f.length - 1 : idx - 1) : (idx >= f.length - 1 ? 0 : idx + 1);
+      f[nextIdx].focus();
+    }
+  });
+
+  /* ============================================================
+     HERO VIDEO — his own footage behind the name
+     Autoplays muted; stands down for reduced motion and when
+     the tab or the hero is out of view (saves battery/data).
+     ============================================================ */
+  var heroVideo = doc.getElementById("hero-video");
+  if (heroVideo) {
+    // if the file cannot play, the poster frame stays — nothing to do
+    heroVideo.addEventListener("error", function () { heroVideo.removeAttribute("autoplay"); });
+
+    if (reduceMotion) {
+      heroVideo.removeAttribute("autoplay");
+      heroVideo.removeAttribute("loop");
+      try { heroVideo.pause(); } catch (e) {}
+    } else {
+      var heroVisible = true;
+      var tryPlay = function () {
+        var p = heroVideo.play();
+        if (p && p.catch) p.catch(function () { /* blocked: poster remains */ });
+      };
+      tryPlay();
+      doc.addEventListener("visibilitychange", function () {
+        if (doc.hidden) { try { heroVideo.pause(); } catch (e) {} }
+        else if (heroVisible) tryPlay();
+      });
+      if ("IntersectionObserver" in window && heroEl) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            heroVisible = e.isIntersecting;
+            if (e.isIntersecting && !doc.hidden) tryPlay();
+            else { try { heroVideo.pause(); } catch (err) {} }
+          });
+        }, { threshold: 0.01 }).observe(heroEl);
+      }
+    }
+  }
+
+  /* ============================================================
+     VIDEO PLAYER — YouTube facade grid + modal
+     The iframe is only created on click, so the page itself
+     never talks to YouTube until a visitor asks it to.
+     ============================================================ */
+  var vItems = Array.prototype.slice.call(doc.querySelectorAll(".v-item"));
+  var vbox = doc.getElementById("vbox");
+  var vFrame = doc.getElementById("vbox-frame");
+  var vTitle = doc.getElementById("vbox-title");
+  var vCount = doc.getElementById("vbox-count");
+  var vClose = doc.getElementById("vbox-close");
+  var vPrev = doc.getElementById("vbox-prev");
+  var vNext = doc.getElementById("vbox-next");
+  var vCurrent = 0;
+  var vLastFocus = null;
+  var vTimer = null;
+
+  function refreshVideoCaption() {
+    if (!vbox || vbox.hasAttribute("hidden") || !vItems[vCurrent]) return;
+    if (vTitle) vTitle.textContent = vItems[vCurrent].getAttribute("data-title") || "";
+    if (vCount) vCount.textContent = (vCurrent + 1) + " / " + vItems.length;
+  }
+
+  /* His videos are self-hosted on R2 and played with a plain <video>.
+     Nothing is fetched until a tile is clicked, and there is no dependency
+     on YouTube — so no embedding permission, no third-party player, and
+     nothing that can be taken away later. Each tile keeps its data-yt id
+     purely as a link target if a visitor would rather watch on YouTube. */
+  function destroyPlayer() {
+    if (!vFrame) return;
+    var old = vFrame.querySelector("video");
+    if (old) { try { old.pause(); old.removeAttribute("src"); old.load(); } catch (e) {} }
+    vFrame.innerHTML = "";
+  }
+
+  function showVideoFallback(i) {
+    if (!vFrame || !vItems[i] || i !== vCurrent) return;
+    var it = vItems[i];
+    var yt = it.getAttribute("data-yt");
+    var thumb = it.querySelector("img");
+    var lang = root.getAttribute("data-lang") || "sl";
+    destroyPlayer();
+
+    var wrap = doc.createElement("div");
+    wrap.className = "vbox-fallback";
+    if (thumb) wrap.style.backgroundImage = "url(" + thumb.getAttribute("src") + ")";
+
+    var msg = doc.createElement("p");
+    msg.className = "vbox-fallback-msg";
+    msg.textContent = lang === "en"
+      ? "This video could not be loaded."
+      : "Tega posnetka ni bilo mogoče naložiti.";
+    wrap.appendChild(msg);
+
+    if (yt) {
+      var cta = doc.createElement("a");
+      cta.className = "vbox-fallback-cta";
+      cta.setAttribute("href", "https://www.youtube.com/watch?v=" + encodeURIComponent(yt));
+      cta.setAttribute("target", "_blank");
+      cta.setAttribute("rel", "noopener noreferrer");
+      cta.textContent = lang === "en" ? "Watch on YouTube" : "Poglej na YouTubu";
+      wrap.appendChild(cta);
+    }
+    vFrame.appendChild(wrap);
+  }
+
+  function playVideo(i) {
+    if (!vItems.length || !vFrame) return;
+    vCurrent = (i + vItems.length) % vItems.length;
+    var it = vItems[vCurrent];
+    var src = it.getAttribute("data-src");
+    refreshVideoCaption();
+    destroyPlayer();
+    if (!src) { showVideoFallback(vCurrent); return; }
+
+    var thumb = it.querySelector("img");
+    var v = doc.createElement("video");
+    v.className = "vbox-video";
+    v.setAttribute("src", src);
+    if (thumb) v.setAttribute("poster", thumb.getAttribute("src"));
+    v.setAttribute("controls", "");
+    v.setAttribute("playsinline", "");
+    v.setAttribute("preload", "metadata");
+    v.setAttribute("controlslist", "nodownload");
+    var idx = vCurrent;
+    v.addEventListener("error", function () { showVideoFallback(idx); });
+    vFrame.appendChild(v);
+    var pr = v.play();
+    if (pr && pr.catch) pr.catch(function () { /* autoplay blocked: controls are there */ });
+  }
+  function openVideo(i) {
+    if (!vbox) return;
+    clearTimeout(vTimer);
+    vLastFocus = doc.activeElement;
+    var sw = window.innerWidth - doc.documentElement.clientWidth;
+    doc.body.style.overflow = "hidden";
+    if (sw > 0) doc.body.style.paddingRight = sw + "px";
+    vbox.removeAttribute("hidden");
+    setAriaHiddenBackground(true);
+    playVideo(i);
+    requestAnimationFrame(function () { vbox.classList.add("open"); });
+    if (vClose) vClose.focus();
+  }
+
+  function closeVideo() {
+    if (!vbox || vbox.hasAttribute("hidden")) return;
+    vbox.classList.remove("open");
+    destroyPlayer();                      // stop playback at once
+    doc.body.style.overflow = "";
+    doc.body.style.paddingRight = "";
+    setAriaHiddenBackground(false);
+    clearTimeout(vTimer);
+    vTimer = setTimeout(function () { vbox.setAttribute("hidden", ""); }, reduceMotion ? 0 : 360);
+    if (vLastFocus && vLastFocus.focus) vLastFocus.focus();
+  }
+
+  vItems.forEach(function (it, i) {
+    it.addEventListener("click", function () { openVideo(i); });
+  });
+  if (vClose) vClose.addEventListener("click", closeVideo);
+  if (vPrev) vPrev.addEventListener("click", function () { playVideo(vCurrent - 1); });
+  if (vNext) vNext.addEventListener("click", function () { playVideo(vCurrent + 1); });
+  if (vbox) {
+    vbox.addEventListener("click", function (e) {
+      if (e.target === vbox) closeVideo();
+    });
+  }
+  doc.addEventListener("keydown", function (e) {
+    if (!vbox || vbox.hasAttribute("hidden")) return;
+    if (e.key === "Escape") { closeVideo(); }
+    else if (e.key === "ArrowLeft") { playVideo(vCurrent - 1); }
+    else if (e.key === "ArrowRight") { playVideo(vCurrent + 1); }
+    else if (e.key === "Tab") {
+      var f = [vPrev, vNext, vClose].filter(Boolean);
       var idx = f.indexOf(doc.activeElement);
       e.preventDefault();
       var nextIdx = e.shiftKey ? (idx <= 0 ? f.length - 1 : idx - 1) : (idx >= f.length - 1 ? 0 : idx + 1);

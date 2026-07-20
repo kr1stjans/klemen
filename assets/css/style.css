@@ -477,3 +477,184 @@ h2, .hero-name, .intro .lead, .passion-text, .farewell-text, .person-title, .foo
   .g-item .g-img { transition: none; }
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
 }
+
+/* ============================================================
+   HERO VIDEO  (Mr. Smiley — his own footage, behind the name)
+   ============================================================ */
+.hero-video { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: var(--night); }
+.hero-video video,
+.hero-video .hero-video-fallback {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 46%;
+  animation: skyIn 3.4s cubic-bezier(.2,.7,.2,1) both;
+  will-change: transform;
+}
+/* seat the title and shield the header, so the type stays readable over moving footage */
+.hero-video::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(6,15,30,0.52) 0%, rgba(6,15,30,0.12) 18%, rgba(6,15,30,0) 38%),
+    linear-gradient(180deg, rgba(6,15,30,0) 42%, rgba(7,17,33,0.55) 74%, rgba(6,14,27,0.88) 100%),
+    radial-gradient(78% 62% at 50% 46%, rgba(5,11,22,0.30), transparent 72%);
+}
+
+/* ============================================================
+   VIDEOS  (YouTube facade grid + modal player)
+   ============================================================ */
+.videos { background: rgba(7, 15, 30, 0.66); padding: clamp(4.5rem, 10vw, 7.5rem) 0; }
+.videos .section-head { margin-bottom: clamp(2rem, 5vw, 3rem); }
+.videos-note {
+  text-align: center; color: var(--on-dark-soft); font-size: 1.05rem;
+  max-width: 60ch; margin: 0 auto clamp(2.5rem, 6vw, 3.6rem); text-wrap: pretty;
+}
+.v-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(272px, 1fr)); gap: clamp(1.1rem, 2.4vw, 1.6rem); }
+.v-item {
+  display: block; width: 100%; margin: 0; padding: 0; border: 0; background: none; text-align: left;
+  border-radius: 12px; overflow: hidden; color: inherit;
+  background: rgba(10, 22, 40, 0.55); border: 1px solid rgba(255,255,255,0.07);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.4s ease, transform 0.5s cubic-bezier(.2,.7,.2,1), border-color 0.4s ease;
+}
+.v-grid .v-item.reveal { opacity: 0; transform: translateY(26px) scale(0.97); }
+.v-grid .v-item.reveal.in { opacity: 1; transform: none; }
+.v-thumb { display: block; position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #0a1526; }
+.v-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(.2,.7,.2,1); }
+.v-thumb::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(6,15,30,0) 45%, rgba(6,15,30,0.55) 100%);
+}
+.v-play {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 58px; height: 58px; border-radius: 50%; z-index: 2;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(9, 20, 36, 0.62); border: 1px solid rgba(230,211,167,0.45);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  color: var(--gold-2);
+  transition: transform 0.35s cubic-bezier(.2,.7,.2,1), background 0.35s ease, border-color 0.35s ease;
+}
+.v-play svg { margin-left: 3px; }
+.v-dur {
+  position: absolute; right: 0.6rem; bottom: 0.6rem; z-index: 2;
+  background: rgba(4, 10, 20, 0.78); color: var(--on-dark);
+  font-size: 0.74rem; letter-spacing: 0.04em; font-variant-numeric: tabular-nums;
+  padding: 0.16rem 0.44rem; border-radius: 5px;
+}
+.v-meta { display: block; padding: 0.95rem 1.05rem 1.1rem; }
+.v-title {
+  display: block;
+  font-family: var(--serif); font-size: 1.22rem; line-height: 1.25; color: var(--on-dark);
+  margin: 0; letter-spacing: 0.01em; overflow-wrap: anywhere;
+}
+.v-index { display: block; font-family: var(--sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+.v-item:hover, .v-item:focus-visible { box-shadow: 0 30px 60px -28px rgba(12,28,48,0.7); border-color: rgba(230,211,167,0.28); transform: translateY(-3px); }
+.v-item:hover .v-thumb img { transform: scale(1.06); }
+.v-item:hover .v-play, .v-item:focus-visible .v-play { transform: translate(-50%, -50%) scale(1.1); background: rgba(14, 30, 52, 0.8); border-color: var(--gold-2); }
+.v-item:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* full playlist link under the grid */
+.v-more { text-align: center; margin-top: clamp(2.2rem, 5vw, 3rem); }
+.v-more a {
+  display: inline-flex; align-items: center; gap: 0.55rem; text-decoration: none;
+  color: var(--on-dark-soft); font-size: 0.92rem; letter-spacing: 0.03em;
+  border-bottom: 1px solid rgba(230,211,167,0.3); padding-bottom: 2px;
+  transition: color 0.25s ease;
+}
+.v-more a:hover { color: var(--gold-2); }
+
+/* ---------- video modal player ---------- */
+.vbox {
+  position: fixed; inset: 0; z-index: 320; display: flex; align-items: center; justify-content: center;
+  background: rgba(4, 10, 20, 0.94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  opacity: 0; transition: opacity 0.35s ease; padding: clamp(1rem, 4vw, 2.5rem);
+}
+.vbox.open { opacity: 1; }
+.vbox[hidden] { display: none; }
+.vbox-stage { width: min(1180px, 94vw); margin: 0; display: flex; flex-direction: column; gap: 0.9rem; }
+.vbox-frame {
+  position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000;
+  border-radius: 10px; overflow: hidden; box-shadow: 0 40px 90px -30px rgba(0,0,0,0.85);
+}
+.vbox-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.vbox-cap { display: flex; align-items: baseline; justify-content: center; gap: 0.7rem; flex-wrap: wrap; text-align: center; }
+.vbox-cap .vbox-title { font-family: var(--serif); font-size: 1.3rem; color: var(--on-dark); }
+.vbox-cap .vbox-count { color: var(--on-dark-soft); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.vbox-btn {
+  position: absolute; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  color: #fff; border-radius: 50%; width: 52px; height: 52px;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: background 0.25s, transform 0.25s;
+}
+.vbox-btn:hover { background: rgba(255,255,255,0.18); }
+.vbox-close { top: 1.3rem; right: 1.3rem; width: 46px; height: 46px; }
+.vbox-prev { left: clamp(0.4rem, 2vw, 1.6rem); top: 50%; transform: translateY(-50%); }
+.vbox-next { right: clamp(0.4rem, 2vw, 1.6rem); top: 50%; transform: translateY(-50%); }
+.vbox-prev:hover { transform: translateY(-50%) scale(1.06); }
+.vbox-next:hover { transform: translateY(-50%) scale(1.06); }
+
+/* ============================================================
+   TRIBUTE  (the words of his skydiving friends)
+   ============================================================ */
+.tribute { background: rgba(9, 18, 34, 0.58); padding: clamp(5rem, 11vw, 8rem) 0; }
+.tribute-inner { max-width: 780px; }
+.tribute .section-head { margin-bottom: clamp(2.2rem, 5vw, 3rem); }
+.tribute-quote { position: relative; margin: 0; }
+.tribute-body { color: var(--on-dark-soft); font-size: 1.09rem; position: relative; z-index: 1; }
+.tribute-body p { margin-bottom: 1.25em; text-wrap: pretty; }
+.tribute-body .tribute-lead::first-letter {
+  font-family: var(--serif); font-size: 3.1rem; line-height: 0.86;
+  float: left; padding: 0.06em 0.12em 0 0; color: var(--gold-2);
+}
+.tribute-body em { font-style: italic; color: var(--on-dark); }
+/* the closing line — "Blue skies Klemen!" */
+.tribute-blue {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(1.4rem, 3.2vw, 2rem); line-height: 1.35;
+  color: var(--gold-2); text-align: center; text-wrap: balance;
+  margin: clamp(2.2rem, 5vw, 3rem) 0 0;
+  display: flex; align-items: center; justify-content: center; gap: 0.6rem; flex-wrap: wrap;
+}
+.tribute-blue svg { color: var(--gold); flex: none; animation: dividerTwinkle 4.2s ease-in-out infinite; }
+/* attribution — must read unmistakably as their words */
+.tribute-attrib {
+  margin: clamp(2.4rem, 5vw, 3.2rem) 0 0; padding-top: 1.6rem;
+  border-top: 1px solid rgba(230,211,167,0.22);
+  text-align: center;
+}
+.tribute-attrib .tribute-who {
+  display: block; font-family: var(--serif); font-size: 1.2rem; color: var(--on-dark); margin-bottom: 0.25rem;
+}
+.tribute-attrib .tribute-role {
+  display: block; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.26em;
+  text-transform: uppercase; color: var(--gold);
+}
+
+@media (max-width: 560px) {
+  .v-grid { grid-template-columns: 1fr; }
+  .vbox-prev, .vbox-next { top: auto; bottom: 1rem; transform: none; width: 46px; height: 46px; }
+  .vbox-prev:hover, .vbox-next:hover { transform: scale(1.06); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video video, .hero-video .hero-video-fallback { animation: none; }
+  .v-thumb img, .v-item { transition: none; }
+}
+
+/* fallback shown when a video may not be embedded (YouTube error 150) */
+.vbox-fallback {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 1.1rem; text-align: center;
+  padding: 1.5rem; background-size: cover; background-position: center;
+}
+.vbox-fallback::before { content: ""; position: absolute; inset: 0; background: rgba(5, 12, 24, 0.82); }
+.vbox-fallback-msg { position: relative; margin: 0; color: var(--on-dark-soft); font-size: 1rem; max-width: 34ch; }
+.vbox-fallback-cta {
+  position: relative; display: inline-flex; align-items: center; gap: 0.5rem;
+  text-decoration: none; color: var(--on-dark);
+  background: rgba(14, 30, 52, 0.9); border: 1px solid rgba(230, 211, 167, 0.4);
+  padding: 0.8rem 1.6rem; border-radius: 999px; font-weight: 500; letter-spacing: 0.02em;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+.vbox-fallback-cta:hover { transform: translateY(-2px); background: #14294a; border-color: var(--gold-2); }
+
+/* self-hosted player fills the modal frame */
+.vbox-video { position: absolute; inset: 0; width: 100%; height: 100%; display: block; background: #000; }
