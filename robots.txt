@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kr1stjans.github.io/klemen/sitemap.xml

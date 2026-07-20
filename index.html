@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="sl" data-lang="sl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Klemnu v spomin</title>
+  <meta name="description" content="V spomin Klemnu (1994, 2026). Programer, padalec in prijatelj, na katerega si se lahko vedno zanesel. Deli spomin, zgodbo ali fotografijo." />
+  <meta name="author" content="Prijatelji Klemna" />
+  <meta name="theme-color" content="#0a1a2f" />
+
+  <script>
+    /* Language before paint. Default Slovenian; use English only for a clearly
+       non-Slovenian browser. An explicit choice via the toggle is remembered and wins. */
+    (function () {
+      try {
+        var saved = localStorage.getItem("rk.lang.v2");
+        var lang = "sl";
+        if (saved === "sl" || saved === "en") {
+          lang = saved;
+        } else {
+          var list = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || "sl"];
+          var hasSl = false, hasEn = false;
+          for (var i = 0; i < list.length; i++) {
+            var p = String(list[i]).toLowerCase().split("-")[0];
+            if (p === "sl") hasSl = true;
+            if (p === "en") hasEn = true;
+          }
+          if (!hasSl && hasEn) lang = "en";
+        }
+        document.documentElement.setAttribute("data-lang", lang);
+        document.documentElement.setAttribute("lang", lang);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/img/favicon.svg" />
+
+  <link rel="canonical" href="https://kr1stjans.github.io/klemen/" />
+
+  <!-- Open Graph / social share -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kr1stjans.github.io/klemen/" />
+  <meta property="og:site_name" content="Klemnu v spomin" />
+  <meta property="og:title" content="Klemnu v spomin · 1994 · 2026" />
+  <meta property="og:description" content="Programer, padalec in prijatelj, na katerega si se lahko vedno zanesel. Kraj, kjer se ga spominjamo." />
+  <meta property="og:image" content="https://kr1stjans.github.io/klemen/assets/img/og-klemen.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="sl_SI" />
+  <meta property="og:locale:alternate" content="en_GB" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Klemnu v spomin" />
+  <meta name="twitter:description" content="Programer, padalec in prijatelj, na katerega si se lahko vedno zanesel." />
+  <meta name="twitter:image" content="https://kr1stjans.github.io/klemen/assets/img/og-klemen.jpg" />
+
+  <link rel="preload" as="image" href="assets/img/hero-sky.webp" fetchpriority="high" />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/cormorant-garamond-500-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-400-latin.woff2" crossorigin />
+
+  <link rel="stylesheet" href="assets/css/fonts.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Klemen",
+    "birthDate": "1994-01-11",
+    "deathDate": "2026-07-17",
+    "birthPlace": "Ljubljana, Slovenia",
+    "jobTitle": "Software Developer",
+    "description": "Software developer from Ljubljana who lived in Zurich. A passionate skydiver, traveler, and a devoted friend.",
+    "image": "https://kr1stjans.github.io/klemen/assets/img/hero.webp"
+  }
+  </script>
+</head>
+<body>
+<a class="skip-link" href="#story"><span data-l="sl">Preskoči na vsebino</span><span data-l="en">Skip to content</span></a>
+<div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+<canvas class="cursor-trail" id="cursor-trail" aria-hidden="true"></canvas>
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+<!-- fixed starscape behind the whole page -->
+<div class="page-sky" aria-hidden="true">
+  <img class="page-sky-img" src="assets/img/hero-sky.webp" width="2400" height="794" fetchpriority="high" decoding="async" alt="" />
+  <canvas class="page-sky-canvas" id="sky-canvas"></canvas>
+  <span class="page-sky-veil"></span>
+</div>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header" id="site-header">
+  <div class="wrap header-inner">
+    <a href="#home" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 3 L13.3 9.1 L19 10.2 L13.3 11.3 L12 17.4 L10.7 11.3 L5 10.2 L10.7 9.1 Z" fill="currentColor"/></svg>
+      </span>
+      <span class="brand-name">Klemnu v spomin</span>
+    </a>
+
+    <nav class="site-nav" id="site-nav" aria-label="Glavna navigacija">
+      <a href="#story"><span data-l="sl">Zgodba</span><span data-l="en">His Story</span></a>
+      <a href="#passion"><span data-l="sl">Padalstvo</span><span data-l="en">Skydiving</span></a>
+      <a href="#memories"><span data-l="sl">Spomini</span><span data-l="en">Memories</span></a>
+      <a href="#share"><span data-l="sl">Deli spomin</span><span data-l="en">Share a Memory</span></a>
+    </nav>
+
+    <div class="header-tools">
+      <div class="lang-switch" role="group" aria-label="Jezik / Language">
+        <button type="button" data-setlang="sl" class="is-active" aria-pressed="true">SL</button>
+        <span class="lang-sep" aria-hidden="true"></span>
+        <button type="button" data-setlang="en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Meni">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <figure class="hero-portrait">
+        <img src="assets/img/klemen-portrait.webp" width="640" height="509" fetchpriority="high" decoding="async"
+             alt="Klemen" data-alt-sl="Klemen" data-alt-en="Klemen" />
+      </figure>
+      <h1 class="hero-name"><span data-l="sl">Klemnu v spomin</span><span data-l="en">In memory of Klemen</span></h1>
+      <p class="hero-dates">1994 <span class="mid" aria-hidden="true">·</span> 2026</p>
+      <p class="hero-tagline">
+        <span data-l="sl">Sin, partner in prijatelj, na katerega si se lahko vedno zanesel.</span>
+        <span data-l="en">A son, a partner, and a friend you could always count on.</span>
+      </p>
+    </div>
+    <a href="#intro" class="scroll-hint" aria-label="Naprej">
+      <span data-l="sl">Njegova zgodba</span><span data-l="en">His story</span>
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 9 L12 15 L18 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+  <!-- ================= INTRO ================= -->
+  <section class="intro" id="intro">
+    <div class="wrap intro-grid reveal">
+      <figure class="intro-portrait">
+        <img src="assets/img/hero.webp" width="1440" height="1920" loading="lazy" decoding="async"
+             alt="Klemen" data-alt-sl="Klemen" data-alt-en="Klemen" />
+      </figure>
+      <div class="intro-body">
+        <p class="lead" data-l="sl">Klemen je bil ljubeč partner, sin, brat in stric, dragocen prijatelj in sodelavec, navdušen popotnik ter strasten padalec. 17. julija 2026 nas je mnogo prezgodaj zapustil. Ta stran je posvečena spominu nanj.</p>
+        <p class="lead" data-l="en">Klemen was a loving partner, son, brother, and uncle, a treasured friend and colleague, an avid traveler, and a passionate skydiver. On 17 July 2026 he left us far too soon. This page is dedicated to his memory.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HIS STORY ================= -->
+  <section class="story" id="story">
+    <div class="wrap story-grid">
+      <div class="story-text reveal">
+        <p class="eyebrow"><span data-l="sl">Njegova zgodba</span><span data-l="en">His Story</span></p>
+        <h2 data-l="sl">Od Ljubljane do Züricha</h2>
+        <h2 data-l="en">From Ljubljana to Zurich</h2>
+
+        <div class="prose">
+          <p data-l="sl">Klemen se je rodil v Ljubljani 11. januarja 1994, mami Zdenki in očetu Jožetu. Leta 1997 se je družini pridružila njegova sestra Alenka.</p>
+          <p data-l="en">Klemen was born in Ljubljana on 11 January 1994, to his mother Zdenka and his father Jože. In 1997 his sister Alenka joined the family.</p>
+
+          <p data-l="sl">Obiskoval je Osnovno šolo Bičevje, nato Vegovo in zatem nadaljeval študij na Fakulteti za računalništvo in informatiko.</p>
+          <p data-l="en">He attended Bičevje Primary School, then Vegova, and went on to study at the Faculty of Computer and Information Science.</p>
+
+          <p data-l="sl">Bil je vztrajen in delaven. Leta 2017 je odšel na Japonsko na izmenjavo v podjetje Google, kjer se je s svojim znanjem in delom dokazal. Leto pozneje, leta 2018, se je preselil v Zürich, kjer je delal kot programer in si gradil življenje v tujini.</p>
+          <p data-l="en">He was persistent and hardworking. In 2017 he went to Japan on an exchange with Google, where he proved himself through his knowledge and his work. A year later, in 2018, he moved to Zurich, where he worked as a software developer and built a life abroad.</p>
+
+          <p data-l="sl">Leta 2024 je spoznal svojo partnerko Kai. Ob njej je odkrival nove strani sebe. Začel je kuhati in vrtnariti. Skupaj sta na balkonu v visokih gredah gojila zelišča in zelenjavo, načrtovala pa sta tudi, da se bosta naučila šivati. Veliko sta potovala, raziskovala svet in ustvarjala skupne načrte za prihodnost.</p>
+          <p data-l="en">In 2024 he met his partner, Kai. With her, he discovered new sides of himself. He took up cooking and gardening. Together they grew herbs and vegetables in raised beds on their balcony, and they were also planning to learn how to sew. They traveled a great deal, explored the world, and made plans for the future together.</p>
+
+          <p data-l="sl">Čeprav je živel v tujini in ga je pot vodila v različne kraje, na dom in svoje bližnje ni nikoli pozabil. Družina mu je veliko pomenila. Nečak Oskar je bil vedno prvi, po katerem je vprašal. V njegovih zadnjih dneh pa je družina pozdravila še drugega nečaka, Lovra.</p>
+          <p data-l="en">Although he lived abroad and his path took him to many places, he never forgot home or the people close to him. Family meant a great deal to him. His nephew Oskar was always the first person he asked about, and in his final days the family welcomed a second nephew, Lovro.</p>
+
+          <p data-l="sl">Klemen je bil preprost, ljubeč in skrben človek. Svojo naklonjenost je pogosto pokazal tiho, skozi dejanja, pozornost in skrb za ljudi, ki jih je imel rad. Prav takšnega ga bomo ohranili v spominu.</p>
+          <p data-l="en">Klemen was a simple, loving, and caring person. He often showed his affection quietly, through his actions, his attentiveness, and his care for the people he loved. That is exactly how we will remember him.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PASSION / SKY ================= -->
+  <section class="passion" id="passion">
+    <div class="wrap narrow passion-inner reveal">
+      <p class="eyebrow light"><span data-l="sl">Njegova največja strast</span><span data-l="en">His greatest passion</span></p>
+      <h2 data-l="sl">Padalstvo</h2>
+      <h2 data-l="en">Skydiving</h2>
+      <p class="passion-text" data-l="sl">Padalstvo je bilo Klemnova največja strast. Leta 2017 je opravil padalski tečaj in od takrat je skakanju posvečal velik del svojega prostega časa. O padalstvu je rad pripovedoval, svoje navdušenje pa je z veseljem delil tudi z drugimi.</p>
+      <p class="passion-text" data-l="en">Skydiving was Klemen's greatest passion. In 2017 he completed his skydiving course, and from then on he devoted much of his free time to jumping. He loved to talk about it, and he gladly shared his enthusiasm with others.</p>
+      <p class="passion-text" data-l="sl">V naslednjih letih je opravil več kot 1.500 skokov na različnih koncih sveta. Veliko časa je preživel tudi na letališču Šentvid pri Stični, kjer je zelo rad skakal in se družil s ljudmi, s katerimi ga je povezovala ljubezen do padalstva.</p>
+      <p class="passion-text" data-l="en">In the years that followed he made more than 1,500 jumps in different parts of the world. He also spent a lot of time at the Šentvid pri Stični airfield, where he loved to jump and to spend time with the people who shared his love of the sport.</p>
+      <p class="passion-text" data-l="sl">Tam je opravil tudi svoj zadnji skok. V tolažbo nam je misel, da je bil takrat tam, kjer je bil najraje.</p>
+      <p class="passion-text" data-l="en">It was there that he made his final jump. It is a comfort to us to know that he was where he most loved to be.</p>
+    </div>
+  </section>
+
+  <!-- ================= MEMORIES / GALLERY ================= -->
+  <section class="memories" id="memories">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow"><span data-l="sl">Spomini</span><span data-l="en">Memories</span></p>
+        <h2 data-l="sl">Nekaj trenutkov z njim</h2>
+        <h2 data-l="en">A Few Moments With Him</h2>
+      </div>
+      <div class="gallery" id="gallery">
+        <button class="g-item reveal" data-full="assets/img/gallery/g02.webp" data-cap-sl="V Alpah" data-cap-en="In the Alps" aria-label="Odpri fotografijo">
+          <img class="g-img" src="assets/img/gallery/g02-t.webp" width="1350" height="1800" loading="lazy" decoding="async" alt="Klemen v Alpah" data-alt-sl="Klemen v Alpah" data-alt-en="Klemen in the Alps" />
+          <span class="g-cap" aria-hidden="true"><span data-l="sl">V Alpah</span><span data-l="en">In the Alps</span></span>
+        </button>
+        <button class="g-item reveal" data-full="assets/img/gallery/g03.webp" data-cap-sl="Liechtenstein" data-cap-en="Liechtenstein" aria-label="Odpri fotografijo">
+          <img class="g-img" src="assets/img/gallery/g03-t.webp" width="1350" height="1800" loading="lazy" decoding="async" alt="Klemen z nasmehom" data-alt-sl="Klemen z nasmehom" data-alt-en="Klemen smiling" />
+          <span class="g-cap" aria-hidden="true"><span data-l="sl">Liechtenstein</span><span data-l="en">Liechtenstein</span></span>
+        </button>
+        <button class="g-item reveal" data-full="assets/img/gallery/g05.webp" data-cap-sl="Rojstni dan" data-cap-en="A birthday" aria-label="Odpri fotografijo">
+          <img class="g-img" src="assets/img/gallery/g05-t.webp" width="1800" height="1350" loading="lazy" decoding="async" alt="Klemen s prijatelji na rojstnem dnevu" data-alt-sl="Klemen s prijatelji na rojstnem dnevu" data-alt-en="Klemen with friends on a birthday" />
+          <span class="g-cap" aria-hidden="true"><span data-l="sl">Rojstni dan</span><span data-l="en">A birthday</span></span>
+        </button>
+        <button class="g-item reveal" data-full="assets/img/gallery/g09.webp" data-cap-sl="Padalstvo" data-cap-en="Skydiving" aria-label="Odpri fotografijo">
+          <img class="g-img" src="assets/img/gallery/g09-t.webp" width="1800" height="1352" loading="lazy" decoding="async" alt="Klemen med padalci" data-alt-sl="Klemen med padalci" data-alt-en="Klemen among skydivers" />
+          <span class="g-cap" aria-hidden="true"><span data-l="sl">Padalstvo</span><span data-l="en">Skydiving</span></span>
+        </button>
+        <button class="g-item reveal" data-full="assets/img/gallery/g10.webp" data-cap-sl="Sankanje" data-cap-en="Sledging" aria-label="Odpri fotografijo">
+          <img class="g-img" src="assets/img/gallery/g10-t.webp" width="1350" height="1800" loading="lazy" decoding="async" alt="Klemen na snegu" data-alt-sl="Klemen na snegu" data-alt-en="Klemen in the snow" />
+          <span class="g-cap" aria-hidden="true"><span data-l="sl">Sankanje</span><span data-l="en">Sledging</span></span>
+        </button>
+        <button class="g-item reveal" data-full="assets/img/gallery/g11.webp" data-cap-sl="Skupaj" data-cap-en="Together" aria-label="Odpri fotografijo">
+          <img class="g-img" src="assets/img/gallery/g11-t.webp" width="1200" height="1600" loading="lazy" decoding="async" alt="Klemen z bližnjo osebo" data-alt-sl="Klemen z bližnjo osebo" data-alt-en="Klemen with someone dear to him" />
+          <span class="g-cap" aria-hidden="true"><span data-l="sl">Skupaj</span><span data-l="en">Together</span></span>
+        </button>
+        <button class="g-item reveal" data-full="assets/img/gallery/g13.webp" data-cap-sl="Prijatelja" data-cap-en="Friends" aria-label="Odpri fotografijo">
+          <img class="g-img" src="assets/img/gallery/g13-t.webp" width="1350" height="1800" loading="lazy" decoding="async" alt="Klemen s prijateljem" data-alt-sl="Klemen s prijateljem" data-alt-en="Klemen with a friend" />
+          <span class="g-cap" aria-hidden="true"><span data-l="sl">Prijatelja</span><span data-l="en">Friends</span></span>
+        </button>
+        <button class="g-item reveal" data-full="assets/img/gallery/g14.webp" data-cap-sl="Zima" data-cap-en="Winter" aria-label="Odpri fotografijo">
+          <img class="g-img" src="assets/img/gallery/g14-t.webp" width="1800" height="1350" loading="lazy" decoding="async" alt="Klemen pozimi z družbo" data-alt-sl="Klemen pozimi z družbo" data-alt-en="Klemen in winter with friends" />
+          <span class="g-cap" aria-hidden="true"><span data-l="sl">Zima</span><span data-l="en">Winter</span></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SHARE A MEMORY ================= -->
+  <section class="share" id="share">
+    <div class="wrap narrow reveal">
+      <span class="divider" aria-hidden="true"><i></i><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 4 L13 10.5 L19 11.5 L13 12.5 L12 19 L11 12.5 L5 11.5 L11 10.5 Z" fill="currentColor"/></svg><i></i></span>
+      <h2 data-l="sl">Deli spomin na Klemna</h2>
+      <h2 data-l="en">Share a Memory of Klemen</h2>
+      <p class="share-text" data-l="sl">Ste poznali Klemna? Če imate zgodbo, fotografijo ali samo nekaj besed, ki bi jih radi dodali tej strani, nam pišite. Veseli bomo vsakega sporočila in vsakega spomina, ki ga lahko dodamo sem.</p>
+      <p class="share-text" data-l="en">Did you know Klemen? If you have a story, a photo, or just a few words you would like to add to this page, please get in touch. We would be grateful for anything you send, and for every memory we can add here.</p>
+      <a class="btn-mail" href="mailto:kristjansesek@gmail.com?subject=Spomin%20na%20Klemna">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 6.5 A1.5 1.5 0 0 1 4.5 5 h15 A1.5 1.5 0 0 1 21 6.5 v11 A1.5 1.5 0 0 1 19.5 19 h-15 A1.5 1.5 0 0 1 3 17.5 Z M4 7 l8 6 l8 -6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <span data-l="sl">Napiši nam</span><span data-l="en">Write to us</span>
+      </a>
+      <p class="share-mail"><a href="mailto:kristjansesek@gmail.com?subject=Spomin%20na%20Klemna">kristjansesek@gmail.com</a></p>
+    </div>
+  </section>
+
+  <!-- ================= FAREWELL ================= -->
+  <section class="farewell" id="farewell">
+    <div class="wrap narrow farewell-inner reveal">
+      <h2 data-l="sl">Pogrešamo te, Klemen.</h2>
+      <h2 data-l="en">We miss you, Klemen.</h2>
+      <p class="farewell-text" data-l="sl">Hvala za vso vztrajnost, ki si nam jo pokazal, in za to, da si bil vedno tu. Ne bomo te pozabili.</p>
+      <p class="farewell-text" data-l="en">Thank you for all the persistence you showed us, and for always being there. We will not forget you.</p>
+      <p class="farewell-rip"><span data-l="sl">Počivaj v miru.</span><span data-l="en">Rest in peace.</span></p>
+      <p class="farewell-sig">Klemen<span class="mid" aria-hidden="true">·</span>1994<span class="mid" aria-hidden="true">·</span>2026</p>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-dedication">
+      <span data-l="sl">Ta stran je z ljubeznijo posvečena Klemnu.</span>
+      <span data-l="en">This page is lovingly dedicated to Klemen.</span>
+    </p>
+    <p class="footer-small">
+      <span data-l="sl">Ustvarili prijatelji.</span><span data-l="en">Made by his friends.</span>
+      <a href="mailto:kristjansesek@gmail.com?subject=Spomin%20na%20Klemna" data-l="sl">Deli spomin</a>
+      <a href="mailto:kristjansesek@gmail.com?subject=A%20memory%20of%20Klemen" data-l="en">Share a memory</a>
+    </p>
+  </div>
+</footer>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Fotografija" hidden>
+  <button type="button" class="lb-btn lb-close" id="lb-close" aria-label="Zapri">
+    <svg viewBox="0 0 24 24" width="26" height="26"><path d="M6 6 L18 18 M18 6 L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  </button>
+  <button type="button" class="lb-btn lb-prev" id="lb-prev" aria-label="Prejšnja">
+    <svg viewBox="0 0 24 24" width="34" height="34"><path d="M15 5 L8 12 L15 19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <figure class="lb-figure">
+    <img class="lb-img" id="lb-img" alt="" />
+    <figcaption class="lb-cap" id="lb-cap"></figcaption>
+  </figure>
+  <button type="button" class="lb-btn lb-next" id="lb-next" aria-label="Naslednja">
+    <svg viewBox="0 0 24 24" width="34" height="34"><path d="M9 5 L16 12 L9 19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+</div>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
