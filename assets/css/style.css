@@ -146,7 +146,7 @@ h2, .hero-name, .intro .lead, .passion-text, .farewell-text, .person-title, .foo
 .lang-switch button:hover { opacity: 0.95; }
 .lang-sep { width: 1px; height: 14px; background: currentColor; opacity: 0.3; }
 
-.nav-toggle { display: none; background: none; border: 0; width: 30px; height: 24px; position: relative; padding: 0; }
+.nav-toggle { display: none; background: none; border: 0; width: 30px; height: 24px; position: relative; padding: 0; color: inherit; }
 .nav-toggle span { position: absolute; left: 3px; right: 3px; height: 2px; background: currentColor; border-radius: 2px; transition: transform 0.3s, opacity 0.3s, top 0.3s; }
 .nav-toggle span:nth-child(1) { top: 4px; }
 .nav-toggle span:nth-child(2) { top: 11px; }
